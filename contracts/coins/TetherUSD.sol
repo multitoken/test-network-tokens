@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "../BaseCoin.sol";
 
-contract Tether is BaseCoin {
+contract TetherUSD is BaseCoin {
     constructor() ERC20("Tether USD", "USDT") {
     }
 

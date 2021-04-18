@@ -12,25 +12,29 @@ module.exports = {
         development: {
             host: '127.0.0.1',
             port: 7545,
-            network_id: '*'
+            network_id: '*',
         },
         kovan: {
-            provider: function () {
-                return new HDWalletProvider(MNEMONIC, INFURA_DSN)
-            },
+            provider: () => new HDWalletProvider(MNEMONIC, INFURA_DSN),
             network_id: 42,
-            gas: 4000000
-        }
+            gas: 4000000,
+        },
     },
     compilers: {
         solc: {
             version: '0.8.3',
-        }
+            settings: {
+                optimizer: {
+                    enabled: true,
+                    runs: 200,
+                },
+            },
+        },
     },
     plugins: [
         'truffle-plugin-verify',
     ],
     api_keys: {
         etherscan: ETHERSCAN_API_KEY,
-    }
+    },
 };
