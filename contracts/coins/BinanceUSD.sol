@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "../BaseCoin.sol";
 
-contract BinanceUSD is BaseCoin {
+contract BinanceUsd is BaseCoin {
     constructor() ERC20("Binance USD", "BUSD") {
     }
 
