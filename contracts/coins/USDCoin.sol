@@ -3,11 +3,11 @@ pragma solidity ^0.8.0;
 
 import "../BaseCoin.sol";
 
-contract UsdCoin is BaseCoin {
+contract USDCoin is BaseCoin {
     constructor() ERC20("USD Coin", "USDC") {
     }
 
     function decimals() public override view virtual returns (uint8) {
-        return 18;
+        return 6;
     }
 }

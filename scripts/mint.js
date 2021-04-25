@@ -2,8 +2,8 @@ const BigNumber = require('bignumber.js');
 const dotenv = require('dotenv');
 const ethers = require('ethers');
 const fs = require('fs');
-const path = require('path')
 const Web3 = require('web3');
+const {getContracts} = require("./utils");
 
 dotenv.config();
 
@@ -59,27 +59,6 @@ class Contract {
         input = new BigNumber(input)
         return input.times(scaleMul);
     }
-}
-
-const getContracts = () => {
-    const contractsPath = path.resolve(__dirname, '../build/contracts');
-    const fileNames = fs.readdirSync(contractsPath);
-
-    const addresses = []
-    for (const fileName of fileNames) {
-        const filePath = path.resolve(contractsPath, fileName);
-        let rawData = fs.readFileSync(filePath);
-        let jsonData = JSON.parse(rawData);
-
-        if (jsonData['networks']['42']) {
-            addresses.push({
-                name: jsonData['contractName'],
-                address: jsonData['networks']['42']['address'],
-            });
-        }
-    }
-
-    return addresses;
 }
 
 (async () => {

@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "../BaseCoin.sol";
 
-contract FtxToken is BaseCoin {
+contract FTXToken is BaseCoin {
     constructor() ERC20("FTX Token", "FTT") {
     }
 
