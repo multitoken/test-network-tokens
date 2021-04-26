@@ -7,6 +7,10 @@ const getContracts = () => {
 
     const addresses = []
     for (const fileName of fileNames) {
+        if (fileName == 'Migrations.json') {
+            continue;
+        }
+
         const filePath = path.resolve(contractsPath, fileName);
         let rawData = fs.readFileSync(filePath);
         let jsonData = JSON.parse(rawData);
