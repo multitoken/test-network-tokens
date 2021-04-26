@@ -22,6 +22,6 @@ const getContracts = () => {
     return addresses;
 }
 
-export {
+module.exports = {
     getContracts,
 };
