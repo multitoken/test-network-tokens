@@ -9,14 +9,19 @@ dotenv.config();
 
 const MNEMONIC = process.env.MNEMONIC;
 const INFURA_DSN = process.env.INFURA_DSN;
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 class Contract {
-    constructor(infuraDSN, mnemonic, contractPath, contractAddress) {
-        this.address = contractAddress
+    constructor(infuraDSN,contractPath, contractAddress, mnemonic = null, privateKey = null) {
+        if (!mnemonic && !privateKey) {
+            throw new Error('Either mnemonic or private key should be providfed');
+        }
+
+        this.address = contractAddress;
 
         let provider = new Web3.providers.HttpProvider(infuraDSN);
         this.web3 = new Web3(provider)
-        this.wallet = ethers.Wallet.fromMnemonic(mnemonic);
+        this.wallet = privateKey ? new ethers.Wallet(privateKey) : ethers.Wallet.fromMnemonic(mnemonic);
         this.web3.eth.accounts.wallet.add(this.wallet.privateKey)
         this.web3.eth.defaultAccount = this.wallet.address
 
@@ -65,9 +70,10 @@ class Contract {
     for (let contractInfo of getContracts()) {
         const contract = new Contract(
             INFURA_DSN,
-            MNEMONIC,
             `build/contracts/${contractInfo.name}.json`,
-            contractInfo.address
+            contractInfo.address,
+            MNEMONIC,
+            PRIVATE_KEY
         )
         await contract.mint(500);
     }
