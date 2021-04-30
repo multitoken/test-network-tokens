@@ -3,7 +3,8 @@
     "compile": "truffle compile",
     "console": "truffle console",
     "migrate-kovan": "truffle migrate --network kovan",
-    "mint": "node ./scripts/mint.js"
+    "mint": "node ./scripts/mint.js",
+    "print_addresses": "node ./scripts/print_addresses.js"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.0.0",
