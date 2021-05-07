@@ -8,6 +8,6 @@ contract Ampleforth is BaseCoin {
     }
 
     function decimals() public override view virtual returns (uint8) {
-        return 18;
+        return 9;
     }
 }
