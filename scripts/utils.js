@@ -15,10 +15,10 @@ const getContracts = () => {
         let rawData = fs.readFileSync(filePath);
         let jsonData = JSON.parse(rawData);
 
-        if (jsonData['networks']['42']) {
+        if (jsonData['networks']['80001']) {
             addresses.push({
                 name: jsonData['contractName'],
-                address: jsonData['networks']['42']['address'],
+                address: jsonData['networks']['80001']['address'],
             });
         }
     }

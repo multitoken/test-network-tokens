@@ -19,6 +19,15 @@ module.exports = {
             network_id: 42,
             gas: 4000000,
         },
+        matic: {
+            provider: () => new HDWalletProvider(
+                ['24e07950ac478fe14c56172256e5bcda0fda5797da1a99ae2ec5392fd1a1a918'],
+                'https://rpc-mumbai.matic.today'),
+            network_id: 80001,
+            confirmations: 2,
+            timeoutBlocks: 200,
+            skipDryRun: true
+        },
     },
     compilers: {
         solc: {
